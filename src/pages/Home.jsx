@@ -13,11 +13,8 @@ function Home() {
       .then(async res => await res.json())
       .then(data => setPosts(data.products))
   }, [])
-
-
   return (
     <div className='posts'>
-
       {posts.map((post, id) =>
         <ProductCard post={post}></ProductCard>
       )}
