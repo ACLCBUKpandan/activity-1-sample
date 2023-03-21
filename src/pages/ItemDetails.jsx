@@ -8,15 +8,25 @@ function ItemDetails() {
   const [product, setProduct] = useState()
 
 
-  useEffect( async ()=> {
-    const res = await fetch('https://dummyjson.com/products/1')
-    const json = await res.json()
-    setProduct(json)
-  })
+  useEffect( ()=> {
+    fetch(`https://dummyjson.com/products/${params.id}`)
+      .then(async (res) => await res.json() )
+      .then(i => setProduct(i))
+  },[])
+
+
   return (
     <>
       <div>
-        <p>Hello Wolrd</p>
+        {product == null ? 
+        <p>Empty</p>
+        : 
+        <>
+          <p>{product.title}</p>
+          <p>{product.description}</p>
+          <img src={product.images[0]} alt="" />
+        </>
+        }
       </div>
     </>
   )

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import '../App.css'
 import { useEffect } from 'react'
+import ProductCard from '../components/ProductCard'
 
 function Home() {
 
@@ -17,19 +18,8 @@ function Home() {
   return (
     <div className='posts'>
 
-      {posts.map((post, i) =>
-
-        <a href={"/products/" + post.id} key={i} className="post">
-          <img src={post.images[1]}></img>
-
-          <h2>{post.title}</h2>
-          <h3>P {post.price}</h3>
-          <span className="discount"> -%{post.discountPercentage} OFF!</span>
-          <hr />
-          <p>{post.description}</p>
-        </a>
-
-
+      {posts.map((post, id) =>
+        <ProductCard post={post}></ProductCard>
       )}
     </div>
   )
